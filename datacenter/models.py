@@ -35,9 +35,9 @@ class Visit(models.Model):
         return leaved_at - self.entered_at
 
     def format_duration(self, duration):
-        tdhours, rem = divmod(duration.total_seconds(), 3600)
-        tdminutes, _ = divmod(rem, 60)
-        return '{:}:{:02d}'.format(int(tdhours), int(tdminutes))
+        hours, reminder = divmod(duration.total_seconds(), 3600)
+        minutes, _ = divmod(reminder, 60)
+        return '{:}:{:02d}'.format(int(hours), int(minutes))
 
     def is_visit_long(self, minutes=60):
         return self.get_duration().total_seconds() > minutes * 60
